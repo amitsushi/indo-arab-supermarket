@@ -1,94 +1,82 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Indo&Arab Supermarket</title>
-  <link rel="stylesheet" href="style.css">
-  <style>
-    body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f9f9f9; }
-    header { display:flex; align-items:center; justify-content:space-between; padding:10px 20px; background:#fff; box-shadow:0 2px 5px rgba(0,0,0,0.1); }
-    header img { height:50px; }
-    nav a { margin:0 10px; text-decoration:none; color:#333; font-weight:bold; }
-    .slider { position:relative; width:100%; height:300px; overflow:hidden; }
-    .slides { display:flex; width:300%; animation:slide 12s infinite; }
-    .slides img { width:100%; height:300px; object-fit:cover; }
-    @keyframes slide {
-      0% { margin-left:0; }
-      30% { margin-left:0; }
-      35% { margin-left:-100%; }
-      65% { margin-left:-100%; }
-      70% { margin-left:-200%; }
-      100% { margin-left:-200%; }
-    }
-    h2 { margin:20px; }
-    .categories { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; padding:20px; }
-    .category { background:#fff; border-radius:8px; text-align:center; padding:15px; box-shadow:0 2px 5px rgba(0,0,0,0.1); cursor:pointer; }
-    .category img { width:100px; height:100px; object-fit:contain; }
-    footer { text-align:center; padding:20px; margin-top:20px; background:#222; color:#fff; }
-  </style>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>IndoArab Supermarket</title>
+  <link rel="stylesheet" href="css/styles.css"/>
 </head>
 <body>
-  <!-- HEADER -->
-  <header>
-    <img src="assets/logo.png" alt="Indo&Arab Supermarket Logo">
+<header>
+  <div class="container nav">
+    <a class="brand" href="index.html">
+      <img src="images/logo.png" alt="Logo" onerror="this.style.display='none'">
+      IndoArab Supermarket
+    </a>
     <nav>
-      <a href="index.html">Home</a>
-      <a href="category.html">Categories</a>
-      <a href="cart.html">Cart 🛒</a>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="cart.html">Cart <span class="badge" data-cart-count>0</span></a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
     </nav>
-  </header>
+  </div>
+</header>
 
-  <!-- SLIDER -->
-  <div class="slider">
-    <div class="slides">
-      <img src="https://picsum.photos/id/1011/1200/300" alt="Slide 1">
-      <img src="https://picsum.photos/id/1025/1200/300" alt="Slide 2">
-      <img src="https://picsum.photos/id/1041/1200/300" alt="Slide 3">
+<section class="hero">
+  <div class="container wrap">
+    <h1>Fresh • Halal • Delivered</h1>
+    <p class="muted">Fruits, vegetables, spices, meat and more — shop online with ease.</p>
+    <div style="margin-top:10px">
+      <a class="btn" href="shop.html">Start Shopping</a>
+      <a class="btn btn-outline" href="#categories">Browse Categories</a>
     </div>
   </div>
+</section>
 
-  <!-- CATEGORIES -->
-  <h2>Shop by Category</h2>
-  <div class="categories">
-    <div class="category" onclick="window.location.href='category.html?cat=fruits'">
-      <img src="https://picsum.photos/id/1080/200/200" alt="Fruits">
-      <p>Fruits & Vegetables</p>
+<section id="categories" class="section">
+  <div class="container">
+    <div class="space-between">
+      <h2>Shop by Category</h2>
+      <a class="btn btn-outline" href="shop.html">View all</a>
     </div>
-    <div class="category" onclick="window.location.href='category.html?cat=meat'">
-      <img src="https://picsum.photos/id/292/200/200" alt="Meat">
-      <p>Fresh Meat</p>
-    </div>
-    <div class="category" onclick="window.location.href='category.html?cat=seafood'">
-      <img src="https://picsum.photos/id/102/200/200" alt="Seafood">
-      <p>Seafood</p>
-    </div>
-    <div class="category" onclick="window.location.href='category.html?cat=dairy'">
-      <img src="https://picsum.photos/id/433/200/200" alt="Dairy">
-      <p>Dairy Products</p>
-    </div>
-    <div class="category" onclick="window.location.href='category.html?cat=rice'">
-      <img src="https://picsum.photos/id/1062/200/200" alt="Rice">
-      <p>Rice & Food Cupboard</p>
-    </div>
-    <div class="category" onclick="window.location.href='category.html?cat=household'">
-      <img src="https://picsum.photos/id/160/200/200" alt="Household">
-      <p>Household</p>
-    </div>
-    <div class="category" onclick="window.location.href='category.html?cat=electronics'">
-      <img src="https://picsum.photos/id/180/200/200" alt="Electronics">
-      <p>Electronics</p>
-    </div>
-    <div class="category" onclick="window.location.href='category.html?cat=deals'">
-      <img src="https://picsum.photos/id/250/200/200" alt="Deals">
-      <p>Special Deals</p>
+    <div class="grid grid-4" id="categoryGrid"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="container wrap">
+    <div class="space-between">
+      <div>© <span id="y"></span> IndoArab Supermarket</div>
+      <div class="muted">Privacy • Terms • Refund Policy</div>
     </div>
   </div>
+</footer>
 
-  <!-- FOOTER -->
-  <footer>
-    <p>© 2025 Indo&Arab Supermarket - All Rights Reserved</p>
-  </footer>
+<div class="toast"></div>
+
+<!-- Data + Cart utilities -->
+<script src="js/products.js"></script>
+<script src="js/cart.js"></script>
+<script>
+document.getElementById("y").textContent = new Date().getFullYear();
+const cg = document.getElementById("categoryGrid");
+window.CATEGORIES.forEach(cat=>{
+  const first = window.PRODUCTS.find(p=>p.category===cat);
+  const img = first?.image || "images/placeholder.jpg";
+  cg.insertAdjacentHTML("beforeend", `
+    <a href="shop.html?category=${encodeURIComponent(cat)}" class="card">
+      <img src="${img}" alt="${cat}" />
+      <div class="p">
+        <div class="space-between">
+          <strong>${cat}</strong>
+          <span class="muted">${window.PRODUCTS.filter(p=>p.category===cat).length} items</span>
+        </div>
+      </div>
+    </a>
+  `);
+});
+</script>
 </body>
 </html>
-
