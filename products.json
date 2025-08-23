@@ -1,0 +1,56 @@
+[
+  {
+    "id": "RICE-BASMATI-5KG",
+    "name_en": "Basmati Rice 5kg",
+    "name_ar": "أرز بسمتي ٥ كجم",
+    "price": 29.0,
+    "category": "Rice & Grains",
+    "emoji": "🍚",
+    "badge": "Deal"
+  },
+  {
+    "id": "DATES-MEDJOOL-1KG",
+    "name_en": "Medjool Dates 1kg",
+    "name_ar": "تمر مدجول ١ كجم",
+    "price": 25.0,
+    "category": "Dates & Dry Fruits",
+    "emoji": "🧺",
+    "badge": "Fresh"
+  },
+  {
+    "id": "MASALA-PACK-6",
+    "name_en": "Masala Pack (6 spices)",
+    "name_ar": "مجموعة ماسالا (٦ توابل)",
+    "price": 18.0,
+    "category": "Spices",
+    "emoji": "🌶️",
+    "badge": "Combo"
+  },
+  {
+    "id": "CHICKEN-FRESH-1KG",
+    "name_en": "Fresh Chicken 1kg",
+    "name_ar": "دجاج طازج ١ كجم",
+    "price": 13.0,
+    "category": "Meat & Poultry",
+    "emoji": "🍗",
+    "badge": "Today"
+  },
+  {
+    "id": "PARATHA-10S",
+    "name_en": "Frozen Paratha 10s",
+    "name_ar": "براتا مجمدة ١٠ قطع",
+    "price": 9.5,
+    "category": "Frozen",
+    "emoji": "🥞",
+    "badge": "Value"
+  },
+  {
+    "id": "ZAATAR-200G",
+    "name_en": "Za'atar Mix 200g",
+    "name_ar": "خلطة زعتر ٢٠٠ جم",
+    "price": 7.0,
+    "category": "Spices",
+    "emoji": "🧂",
+    "badge": "Popular"
+  }
+]
