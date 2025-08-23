@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Shop • IndoArab Supermarket</title>
+  <link rel="stylesheet" href="css/styles.css"/>
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <a class="brand" href="index.html">IndoArab Supermarket</a>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><strong>Shop</strong></li>
+        <li><a href="cart.html">Cart <span class="badge" data-cart-count>0</span></a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="section">
+  <div class="container">
+    <h1>Shop</h1>
+
+    <div class="searchbar">
+      <input id="q" type="text" placeholder="Search products (e.g. onion, rice)"/>
+      <select id="cat" class="select"></select>
+      <select id="sort" class="select">
+        <option value="relevance">Sort: Relevance</option>
+        <option value="price-asc">Price: Low → High</option>
+        <option value="price-desc">Price: High → Low</option>
+        <option value="name-asc">Name: A → Z</option>
+      </select>
+    </div>
+
+    <div id="grid" class="grid grid-4"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="container wrap">
+    <div class="space-between">
+      <div>Questions? <span class="muted">Call/WhatsApp +971-000-0000</span></div>
+      <a class="btn" href="cart.html">Go to Cart <span class="badge" data-cart-count>0</span></a>
+    </div>
+  </div>
+</footer>
+
+<div class="toast"></div>
+
+<script src="js/products.js"></script>
+<script src="js/cart.js"></script>
+<script>
+const grid = document.getElementById("grid");
+const qEl = document.getElementById("q");
+const catEl = document.getElementById("cat");
+const sortEl = document.getElementById("sort");
+
+// Populate categories
+catEl.innerHTML = `<option value="">All Categories</option>` + window.CATEGORIES.map(c=>`<option>${c}</option>`).join("");
+// Deep-link ?category=
+const urlCat = new URLSearchParams(location.search).get("category");
+if(urlCat){ catEl.value = urlCat; }
+
+function match(p, term){
+  if(!term) return true;
+  term = term.toLowerCase();
+  return p.name.toLowerCase().includes(term) || p.category.toLowerCase().includes(term);
+}
+function render(){
+  const term = qEl.value.trim();
+  const category = catEl.value;
+  let items = window.PRODUCTS.filter(p => match(p, term) && (!category || p.category===category));
+  const sort = sortEl.value;
+  if(sort==="price-asc") items.sort((a,b)=>a.price-b.price);
+  if(sort==="price-desc") items.sort((a,b)=>b.price-a.price);
+  if(sort==="name-asc") items.sort((a,b)=>a.name.localeCompare(b.name));
+
+  grid.innerHTML = "";
+  if(items.length===0){
+    grid.innerHTML = `<p class="muted">No products found.</p>`;
+    return;
+  }
+  items.forEach(p=>{
+    grid.insertAdjacentHTML("beforeend", `
+      <div class="card">
+        <img src="${p.image}" alt="${p.name}" onerror="this.src='images/placeholder.jpg'">
+        <div class="p">
+          <div style="min-height:48px"><strong>${p.name}</strong><div class="muted">${p.category}</div></div>
+          <div class="space-between" style="margin-top:8px">
+            <div class="price">${money(p.price)} <span class="muted">${p.unit||""}</span></div>
+            <div class="row">
+              <input type="number" min="1" value="1" style="width:70px" id="qty-${p.id}">
+              <button class="btn" onclick="addToCartFromGrid('${p.id}')">Add</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    `);
+  });
+}
+function addToCartFromGrid(id){
+  const qty = Number(document.getElementById(`qty-${id}`).value||1);
+  addToCart(id, qty);
+}
+qEl.addEventListener("input", render);
+catEl.addEventListener("change", render);
+sortEl.addEventListener("change", render);
+render();
+</script>
+</body>
+</html>
