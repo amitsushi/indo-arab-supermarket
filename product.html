@@ -1,21 +1,72 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Product - Indo & Arab Supermarket</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product - Indo&Arab Supermarket</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f9f9f9; }
+    header { display:flex; align-items:center; justify-content:space-between; padding:10px 20px; background:#fff; box-shadow:0 2px 5px rgba(0,0,0,0.1); }
+    header img { height:50px; }
+    nav a { margin:0 10px; text-decoration:none; color:#333; font-weight:bold; }
+    .product-detail { display:flex; justify-content:center; align-items:center; flex-direction:column; padding:40px; }
+    .product-detail img { width:250px; height:250px; object-fit:contain; }
+    h2 { margin-top:20px; }
+    p { font-size:18px; margin:10px 0; }
+    button { background:#e60000; color:#fff; border:none; padding:10px 20px; border-radius:5px; cursor:pointer; font-size:16px; }
+    button:hover { background:#c00000; }
+    footer { text-align:center; padding:20px; margin-top:20px; background:#222; color:#fff; }
+  </style>
 </head>
 <body>
+  <!-- HEADER -->
   <header>
-    <h1>Product Details</h1>
+    <img src="assets/logo.png" alt="Indo&Arab Supermarket Logo">
     <nav>
       <a href="index.html">Home</a>
-      <a href="cart.html">Cart</a>
+      <a href="category.html">Categories</a>
+      <a href="cart.html">Cart 🛒</a>
     </nav>
   </header>
 
-  <section id="product-details"></section>
+  <!-- PRODUCT DETAILS -->
+  <div class="product-detail" id="productDetail"></div>
 
-  <script src="script.js"></script>
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Indo&Arab Supermarket - All Rights Reserved</p>
+  </footer>
+
+  <script>
+    // Same product list for lookup
+    const products = {
+      1:{name:"Apple", img:"https://picsum.photos/id/102/200", price:"QAR 5", desc:"Fresh apples imported."},
+      2:{name:"Banana", img:"https://picsum.photos/id/103/200", price:"QAR 3", desc:"Sweet ripe bananas."},
+      3:{name:"Orange", img:"https://picsum.photos/id/104/200", price:"QAR 6", desc:"Juicy oranges full of vitamin C."},
+      4:{name:"Beef", img:"https://picsum.photos/id/292/200", price:"QAR 25", desc:"Premium quality beef."},
+      5:{name:"Chicken", img:"https://picsum.photos/id/433/200", price:"QAR 15", desc:"Farm fresh chicken."},
+      6:{name:"Salmon", img:"https://picsum.photos/id/1062/200", price:"QAR 30", desc:"Fresh salmon fish."},
+      7:{name:"Shrimp", img:"https://picsum.photos/id/180/200", price:"QAR 20", desc:"Frozen shrimps, high quality."},
+      8:{name:"Milk", img:"https://picsum.photos/id/160/200", price:"QAR 7", desc:"Full cream milk."},
+      9:{name:"Cheese", img:"https://picsum.photos/id/250/200", price:"QAR 12", desc:"Delicious cheese pack."}
+    };
+
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id");
+    const detail = document.getElementById("productDetail");
+
+    if(products[id]){
+      const p = products[id];
+      detail.innerHTML = `
+        <img src="${p.img}" alt="${p.name}">
+        <h2>${p.name}</h2>
+        <p><b>Price:</b> ${p.price}</p>
+        <p>${p.desc}</p>
+        <button onclick="alert('Added to cart!')">Add to Cart</button>
+      `;
+    } else {
+      detail.innerHTML = "<h2>Product not found</h2>";
+    }
+  </script>
 </body>
 </html>
