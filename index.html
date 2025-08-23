@@ -1,36 +1,94 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Indo & Arab Supermarket</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Indo&Arab Supermarket</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f9f9f9; }
+    header { display:flex; align-items:center; justify-content:space-between; padding:10px 20px; background:#fff; box-shadow:0 2px 5px rgba(0,0,0,0.1); }
+    header img { height:50px; }
+    nav a { margin:0 10px; text-decoration:none; color:#333; font-weight:bold; }
+    .slider { position:relative; width:100%; height:300px; overflow:hidden; }
+    .slides { display:flex; width:300%; animation:slide 12s infinite; }
+    .slides img { width:100%; height:300px; object-fit:cover; }
+    @keyframes slide {
+      0% { margin-left:0; }
+      30% { margin-left:0; }
+      35% { margin-left:-100%; }
+      65% { margin-left:-100%; }
+      70% { margin-left:-200%; }
+      100% { margin-left:-200%; }
+    }
+    h2 { margin:20px; }
+    .categories { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; padding:20px; }
+    .category { background:#fff; border-radius:8px; text-align:center; padding:15px; box-shadow:0 2px 5px rgba(0,0,0,0.1); cursor:pointer; }
+    .category img { width:100px; height:100px; object-fit:contain; }
+    footer { text-align:center; padding:20px; margin-top:20px; background:#222; color:#fff; }
+  </style>
 </head>
 <body>
+  <!-- HEADER -->
   <header>
-    <h1>Indo & Arab Supermarket</h1>
+    <img src="assets/logo.png" alt="Indo&Arab Supermarket Logo">
     <nav>
       <a href="index.html">Home</a>
       <a href="category.html">Categories</a>
-      <a href="cart.html">Cart</a>
+      <a href="cart.html">Cart 🛒</a>
     </nav>
   </header>
 
-  <section id="featured">
-    <h2>Featured Products</h2>
-    <div id="featured-products"></div>
-  </section>
+  <!-- SLIDER -->
+  <div class="slider">
+    <div class="slides">
+      <img src="https://picsum.photos/id/1011/1200/300" alt="Slide 1">
+      <img src="https://picsum.photos/id/1025/1200/300" alt="Slide 2">
+      <img src="https://picsum.photos/id/1041/1200/300" alt="Slide 3">
+    </div>
+  </div>
 
-  <section id="categories">
-    <h2>Popular Categories</h2>
-    <ul>
-      <li><a href="category.html?cat=Fresh Produce">Fresh Produce</a></li>
-      <li><a href="category.html?cat=Meat & Poultry">Meat & Poultry</a></li>
-      <li><a href="category.html?cat=Seafood">Seafood</a></li>
-      <li><a href="category.html?cat=Rice & Grains">Rice & Grains</a></li>
-      <li><a href="category.html?cat=Dairy">Dairy</a></li>
-    </ul>
-  </section>
+  <!-- CATEGORIES -->
+  <h2>Shop by Category</h2>
+  <div class="categories">
+    <div class="category" onclick="window.location.href='category.html?cat=fruits'">
+      <img src="https://picsum.photos/id/1080/200/200" alt="Fruits">
+      <p>Fruits & Vegetables</p>
+    </div>
+    <div class="category" onclick="window.location.href='category.html?cat=meat'">
+      <img src="https://picsum.photos/id/292/200/200" alt="Meat">
+      <p>Fresh Meat</p>
+    </div>
+    <div class="category" onclick="window.location.href='category.html?cat=seafood'">
+      <img src="https://picsum.photos/id/102/200/200" alt="Seafood">
+      <p>Seafood</p>
+    </div>
+    <div class="category" onclick="window.location.href='category.html?cat=dairy'">
+      <img src="https://picsum.photos/id/433/200/200" alt="Dairy">
+      <p>Dairy Products</p>
+    </div>
+    <div class="category" onclick="window.location.href='category.html?cat=rice'">
+      <img src="https://picsum.photos/id/1062/200/200" alt="Rice">
+      <p>Rice & Food Cupboard</p>
+    </div>
+    <div class="category" onclick="window.location.href='category.html?cat=household'">
+      <img src="https://picsum.photos/id/160/200/200" alt="Household">
+      <p>Household</p>
+    </div>
+    <div class="category" onclick="window.location.href='category.html?cat=electronics'">
+      <img src="https://picsum.photos/id/180/200/200" alt="Electronics">
+      <p>Electronics</p>
+    </div>
+    <div class="category" onclick="window.location.href='category.html?cat=deals'">
+      <img src="https://picsum.photos/id/250/200/200" alt="Deals">
+      <p>Special Deals</p>
+    </div>
+  </div>
 
-  <script src="script.js"></script>
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Indo&Arab Supermarket - All Rights Reserved</p>
+  </footer>
 </body>
 </html>
+
