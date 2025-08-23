@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Checkout • IndoArab Supermarket</title>
+  <link rel="stylesheet" href="css/styles.css"/>
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <a class="brand" href="index.html">IndoArab Supermarket</a>
+    <nav>
+      <ul>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="cart.html">Cart <span class="badge" data-cart-count>0</span></a></li>
+        <li><strong>Checkout</strong></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="section">
+  <div class="container">
+    <h1>Checkout</h1>
+
+    <div class="grid grid-2">
+      <div class="card">
+        <div class="p">
+          <h2>Delivery Details</h2>
+          <form id="checkoutForm" class="grid" style="gap:12px">
+            <input id="name" type="text" placeholder="Full Name" required>
+            <input id="phone" type="tel" placeholder="Phone Number" required>
+            <input id="address" type="text" placeholder="Address" required>
+            <input id="email" type="email" placeholder="Email (optional)">
+            <textarea id="notes" rows="3" placeholder="Delivery notes (optional)"></textarea>
+            <label><input type="radio" name="pay" value="COD" checked> Cash on Delivery</label>
+            <button class="btn" type="submit">Place Order</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="p">
+          <h2>Order Summary</h2>
+          <table class="table" id="summaryTable"></table>
+          <div class="space-between" style="margin-top:12px">
+            <div class="muted">Delivery</div>
+            <div id="delivery">₹0.00</div>
+          </div>
+          <div class="space-between total" style="margin-top:8px">
+            <div>Total</div>
+            <div id="total">₹0.00</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="toast"></div>
+
+<script src="js/products.js"></script>
+<script src="js/cart.js"></script>
+<script>
+// Build summary
+const summaryTable = document.getElementById("summaryTable");
+function renderSummary(){
+  const cart = getCart();
+  let rows = `<tr><th>Item</th><th>Qty</th><th>Price</th></tr>`;
+  let subtotal = 0;
+  cart.forEach(it=>{
+    const p = findProduct(it.id); if(!p) return;
+    const line = p.price * it.qty; subtotal += line;
+    rows += `<tr><td>${p.name}</td><td>${it.qty}</td><td>${money(line)}</td></tr>`;
+  });
+  if(cart.length===0){ rows += `<tr><td colspan="3" class="muted">Your cart is empty.</td></tr>`; }
+  summaryTable.innerHTML = rows;
+  document.getElementById("delivery").textContent = money(0);
+  document.getElementById("total").textContent = money(subtotal);
+}
+renderSummary();
+
+// Place order (stores locally + optional email handoff)
+document.getElementById("checkoutForm").addEventListener("submit", (e)=>{
+  e.preventDefault();
+  const cart = getCart();
+  if(cart.length===0){ alert("Your cart is empty."); return; }
+
+  const orderId = "IA" + Date.now();
+  const customer = {
+    name: document.getElementById("name").value.trim(),
+    phone: document.getElementById("phone").value.trim(),
+    address: document.getElementById("address").value.trim(),
+    email: document.getElementById("email").value.trim(),
+    notes: document.getElementById("notes").value.trim(),
+    payment: "Cash on Delivery"
+  };
+  const items = cart.map(c=>{
+    const p = findProduct(c.id); return { id:c.id, name:p?.name||c.id, qty:c.qty, price:p?.price||0 };
+  });
+  const total = items.reduce((s,i)=>s + i.qty*i.price, 0);
+
+  const order = { orderId, createdAt:new Date().toISOString(), customer, items, total };
+  const key = "ias_orders_v1";
+  const orders = JSON.parse(localStorage.getItem(key)||"[]");
+  orders.push(order);
+  localStorage.setItem(key, JSON.stringify(orders));
+
+  // OPTIONAL: open an email draft to your store
+  // const mail = "orders@yourstore.com";
+  // const body = encodeURIComponent(JSON.stringify(order, null, 2));
+  // window.location.href = `mailto:${mail}?subject=New Order ${orderId}&body=${body}`;
+
+  emptyCart();
+  window.location.href = "thank-you.html?orderId=" + orderId;
+});
+</script>
+</body>
+</html>
