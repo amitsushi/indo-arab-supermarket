@@ -1,40 +1,36 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Indo&Arab Supermarket — Qatar</title>
-  <link rel="icon" href="assets/logo.svg">
-  <link rel="stylesheet" href="styles.css">
-  <script defer src="app.js"></script>
-
+  <meta charset="UTF-8">
+  <title>Indo & Arab Supermarket</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="header"></header>
+  <header>
+    <h1>Indo & Arab Supermarket</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="category.html">Categories</a>
+      <a href="cart.html">Cart</a>
+    </nav>
+  </header>
 
-  <section class="hero">
-    <div class="container wrap">
-      <div>
-        <div class="kicker i18n-offers">Weekly Offers</div>
-        <h1>Arab & Indo essentials — delivered in Qatar</h1>
-        <div class="toolbar">
-          <span class="badge i18n-delivery">Fast delivery across Doha</span>
-          <span class="badge i18n-halal">100% Halal guaranteed</span>
-        </div>
-        <p style="margin-top:10px"><a class="btn primary i18n-shopNow" href="#featured">Shop Now</a></p>
-      </div>
-      <div class="banner">Add a rotating banner here (jpg/png/webp). Ideal for Promotions, Weekend Deals, and Festival Offers.</div>
-    </div>
+  <section id="featured">
+    <h2>Featured Products</h2>
+    <div id="featured-products"></div>
   </section>
 
-  <main class="container" id="home">
-    <h2 class="i18n-categories">Popular Categories</h2>
-    <div class="card-grid" id="categories"></div>
+  <section id="categories">
+    <h2>Popular Categories</h2>
+    <ul>
+      <li><a href="category.html?cat=Fresh Produce">Fresh Produce</a></li>
+      <li><a href="category.html?cat=Meat & Poultry">Meat & Poultry</a></li>
+      <li><a href="category.html?cat=Seafood">Seafood</a></li>
+      <li><a href="category.html?cat=Rice & Grains">Rice & Grains</a></li>
+      <li><a href="category.html?cat=Dairy">Dairy</a></li>
+    </ul>
+  </section>
 
-    <h2 class="i18n-featured">Featured Deals</h2>
-    <div class="card-grid" id="featured"></div>
-  </main>
-
-  <footer class="footer"><div class="container">Loading…</div></footer>
+  <script src="script.js"></script>
 </body>
 </html>

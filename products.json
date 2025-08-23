@@ -1,56 +1,422 @@
 [
   {
-    "id": "RICE-BASMATI-5KG",
-    "name_en": "Basmati Rice 5kg",
-    "name_ar": "أرز بسمتي ٥ كجم",
-    "price": 29.0,
+    "id": 1,
+    "name": "Basmati Rice 5kg",
     "category": "Rice & Grains",
-    "emoji": "🍚",
-    "badge": "Deal"
+    "price": 45,
+    "image": "rice.png"
   },
   {
-    "id": "DATES-MEDJOOL-1KG",
-    "name_en": "Medjool Dates 1kg",
-    "name_ar": "تمر مدجول ١ كجم",
-    "price": 25.0,
-    "category": "Dates & Dry Fruits",
-    "emoji": "🧺",
-    "badge": "Fresh"
+    "id": 2,
+    "name": "Brown Lentils 1kg",
+    "category": "Rice & Grains",
+    "price": 12,
+    "image": "lentils.png"
   },
   {
-    "id": "MASALA-PACK-6",
-    "name_en": "Masala Pack (6 spices)",
-    "name_ar": "مجموعة ماسالا (٦ توابل)",
-    "price": 18.0,
-    "category": "Spices",
-    "emoji": "🌶️",
-    "badge": "Combo"
+    "id": 3,
+    "name": "Fresh Tomatoes 1kg",
+    "category": "Fresh Produce",
+    "price": 8,
+    "image": "tomatoes.png"
   },
   {
-    "id": "CHICKEN-FRESH-1KG",
-    "name_en": "Fresh Chicken 1kg",
-    "name_ar": "دجاج طازج ١ كجم",
-    "price": 13.0,
+    "id": 4,
+    "name": "Fresh Onions 1kg",
+    "category": "Fresh Produce",
+    "price": 6,
+    "image": "onions.png"
+  },
+  {
+    "id": 5,
+    "name": "Whole Chicken 1kg",
     "category": "Meat & Poultry",
-    "emoji": "🍗",
-    "badge": "Today"
+    "price": 18,
+    "image": "chicken.png"
   },
   {
-    "id": "PARATHA-10S",
-    "name_en": "Frozen Paratha 10s",
-    "name_ar": "براتا مجمدة ١٠ قطع",
-    "price": 9.5,
-    "category": "Frozen",
-    "emoji": "🥞",
-    "badge": "Value"
+    "id": 6,
+    "name": "Beef Mince 1kg",
+    "category": "Meat & Poultry",
+    "price": 35,
+    "image": "beef.png"
   },
   {
-    "id": "ZAATAR-200G",
-    "name_en": "Za'atar Mix 200g",
-    "name_ar": "خلطة زعتر ٢٠٠ جم",
-    "price": 7.0,
-    "category": "Spices",
-    "emoji": "🧂",
-    "badge": "Popular"
+    "id": 7,
+    "name": "Fresh Fish 1kg",
+    "category": "Seafood",
+    "price": 30,
+    "image": "fish.png"
+  },
+  {
+    "id": 8,
+    "name": "Prawns 1kg",
+    "category": "Seafood",
+    "price": 55,
+    "image": "prawns.png"
+  },
+  {
+    "id": 9,
+    "name": "Milk 1L",
+    "category": "Dairy",
+    "price": 6,
+    "image": "milk.png"
+  },
+  {
+    "id": 10,
+    "name": "Yogurt 500g",
+    "category": "Dairy",
+    "price": 10,
+    "image": "yogurt.png"
+  },
+  {
+    "id": 11,
+    "name": "Sample Item 11",
+    "category": "General",
+    "price": 16,
+    "image": "placeholder.png"
+  },
+  {
+    "id": 12,
+    "name": "Sample Item 12",
+    "category": "General",
+    "price": 17,
+    "image": "placeholder.png"
+  },
+  {
+    "id": 13,
+    "name": "Sample Item 13",
+    "category": "General",
+    "price": 18,
+    "image": "placeholder.png"
+  },
+  {
+    "id": 14,
+    "name": "Sample Item 14",
+    "category": "General",
+    "price": 19,
+    "image": "placeholder.png"
+  },
+  {
+    "id": 15,
+    "name": "Sample Item 15",
+    "category": "General",
+    "price": 20,
+    "image": "placeholder.png"
+  },
+  {
+    "id": 16,
+    "name": "Sample Item 16",
+    "category": "General",
+    "price": 21,
+    "image": "placeholder.png"
+  },
+  {
+    "id": 17,
+    "name": "Sample Item 17",
+    "category": "General",
+    "price": 22,
+    "image": "placeholder.png"
+  },
+  {
+    "id": 18,
+    "name": "Sample Item 18",
+    "category": "General",
+    "price": 23,
+    "image": "placeholder.png"
+  },
+  {
+    "id": 19,
+    "name": "Sample Item 19",
+    "category": "General",
+    "price": 24,
+    "image": "placeholder.png"
+  },
+  {
+    "id": 20,
+    "name": "Sample Item 20",
+    "category": "General",
+    "price": 25,
+    "image": "placeholder.png"
+  },
+  {
+    "id": 21,
+    "name": "Sample Item 21",
+    "category": "General",
+    "price": 26,
+    "image": "placeholder.png"
+  },
+  {
+    "id": 22,
+    "name": "Sample Item 22",
+    "category": "General",
+    "price": 27,
+    "image": "placeholder.png"
+  },
+  {
+    "id": 23,
+    "name": "Sample Item 23",
+    "category": "General",
+    "price": 28,
+    "image": "placeholder.png"
+  },
+  {
+    "id": 24,
+    "name": "Sample Item 24",
+    "category": "General",
+    "price": 29,
+    "image": "placeholder.png"
+  },
+  {
+    "id": 25,
+    "name": "Sample Item 25",
+    "category": "General",
+    "price": 30,
+    "image": "placeholder.png"
+  },
+  {
+    "id": 26,
+    "name": "Sample Item 26",
+    "category": "General",
+    "price": 31,
+    "image": "placeholder.png"
+  },
+  {
+    "id": 27,
+    "name": "Sample Item 27",
+    "category": "General",
+    "price": 32,
+    "image": "placeholder.png"
+  },
+  {
+    "id": 28,
+    "name": "Sample Item 28",
+    "category": "General",
+    "price": 33,
+    "image": "placeholder.png"
+  },
+  {
+    "id": 29,
+    "name": "Sample Item 29",
+    "category": "General",
+    "price": 34,
+    "image": "placeholder.png"
+  },
+  {
+    "id": 30,
+    "name": "Sample Item 30",
+    "category": "General",
+    "price": 35,
+    "image": "placeholder.png"
+  },
+  {
+    "id": 31,
+    "name": "Sample Item 31",
+    "category": "General",
+    "price": 36,
+    "image": "placeholder.png"
+  },
+  {
+    "id": 32,
+    "name": "Sample Item 32",
+    "category": "General",
+    "price": 37,
+    "image": "placeholder.png"
+  },
+  {
+    "id": 33,
+    "name": "Sample Item 33",
+    "category": "General",
+    "price": 38,
+    "image": "placeholder.png"
+  },
+  {
+    "id": 34,
+    "name": "Sample Item 34",
+    "category": "General",
+    "price": 39,
+    "image": "placeholder.png"
+  },
+  {
+    "id": 35,
+    "name": "Sample Item 35",
+    "category": "General",
+    "price": 40,
+    "image": "placeholder.png"
+  },
+  {
+    "id": 36,
+    "name": "Sample Item 36",
+    "category": "General",
+    "price": 41,
+    "image": "placeholder.png"
+  },
+  {
+    "id": 37,
+    "name": "Sample Item 37",
+    "category": "General",
+    "price": 42,
+    "image": "placeholder.png"
+  },
+  {
+    "id": 38,
+    "name": "Sample Item 38",
+    "category": "General",
+    "price": 43,
+    "image": "placeholder.png"
+  },
+  {
+    "id": 39,
+    "name": "Sample Item 39",
+    "category": "General",
+    "price": 44,
+    "image": "placeholder.png"
+  },
+  {
+    "id": 40,
+    "name": "Sample Item 40",
+    "category": "General",
+    "price": 45,
+    "image": "placeholder.png"
+  },
+  {
+    "id": 41,
+    "name": "Sample Item 41",
+    "category": "General",
+    "price": 46,
+    "image": "placeholder.png"
+  },
+  {
+    "id": 42,
+    "name": "Sample Item 42",
+    "category": "General",
+    "price": 47,
+    "image": "placeholder.png"
+  },
+  {
+    "id": 43,
+    "name": "Sample Item 43",
+    "category": "General",
+    "price": 48,
+    "image": "placeholder.png"
+  },
+  {
+    "id": 44,
+    "name": "Sample Item 44",
+    "category": "General",
+    "price": 49,
+    "image": "placeholder.png"
+  },
+  {
+    "id": 45,
+    "name": "Sample Item 45",
+    "category": "General",
+    "price": 50,
+    "image": "placeholder.png"
+  },
+  {
+    "id": 46,
+    "name": "Sample Item 46",
+    "category": "General",
+    "price": 51,
+    "image": "placeholder.png"
+  },
+  {
+    "id": 47,
+    "name": "Sample Item 47",
+    "category": "General",
+    "price": 52,
+    "image": "placeholder.png"
+  },
+  {
+    "id": 48,
+    "name": "Sample Item 48",
+    "category": "General",
+    "price": 53,
+    "image": "placeholder.png"
+  },
+  {
+    "id": 49,
+    "name": "Sample Item 49",
+    "category": "General",
+    "price": 54,
+    "image": "placeholder.png"
+  },
+  {
+    "id": 50,
+    "name": "Sample Item 50",
+    "category": "General",
+    "price": 55,
+    "image": "placeholder.png"
+  },
+  {
+    "id": 51,
+    "name": "Sample Item 51",
+    "category": "General",
+    "price": 56,
+    "image": "placeholder.png"
+  },
+  {
+    "id": 52,
+    "name": "Sample Item 52",
+    "category": "General",
+    "price": 57,
+    "image": "placeholder.png"
+  },
+  {
+    "id": 53,
+    "name": "Sample Item 53",
+    "category": "General",
+    "price": 58,
+    "image": "placeholder.png"
+  },
+  {
+    "id": 54,
+    "name": "Sample Item 54",
+    "category": "General",
+    "price": 59,
+    "image": "placeholder.png"
+  },
+  {
+    "id": 55,
+    "name": "Sample Item 55",
+    "category": "General",
+    "price": 60,
+    "image": "placeholder.png"
+  },
+  {
+    "id": 56,
+    "name": "Sample Item 56",
+    "category": "General",
+    "price": 61,
+    "image": "placeholder.png"
+  },
+  {
+    "id": 57,
+    "name": "Sample Item 57",
+    "category": "General",
+    "price": 62,
+    "image": "placeholder.png"
+  },
+  {
+    "id": 58,
+    "name": "Sample Item 58",
+    "category": "General",
+    "price": 63,
+    "image": "placeholder.png"
+  },
+  {
+    "id": 59,
+    "name": "Sample Item 59",
+    "category": "General",
+    "price": 64,
+    "image": "placeholder.png"
+  },
+  {
+    "id": 60,
+    "name": "Sample Item 60",
+    "category": "General",
+    "price": 65,
+    "image": "placeholder.png"
   }
 ]
