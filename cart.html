@@ -1,90 +1,54 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Your Cart • IndoArab Supermarket</title>
-  <link rel="stylesheet" href="css/styles.css"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart - IndoArab Supermarket</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="cart.js" defer></script>
 </head>
 <body>
-<header>
-  <div class="container nav">
-    <a class="brand" href="index.html">IndoArab Supermarket</a>
+  <header>
     <nav>
-      <ul>
-        <li><a href="shop.html">Shop</a></li>
-        <li><strong>Cart</strong> <span class="badge" data-cart-count>0</span></li>
-      </ul>
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="cart.html">Cart (<span id="cart-count">0</span>)</a>
     </nav>
-  </div>
-</header>
+  </header>
 
-<section class="section">
-  <div class="container">
+  <main>
     <h1>Your Cart</h1>
-    <table class="table" id="cartTable">
-      <thead>
-        <tr><th>Item</th><th>Price</th><th>Qty</th><th>Line Total</th><th></th></tr>
-      </thead>
-      <tbody id="cartBody"></tbody>
-    </table>
+    <div id="cart-items"></div>
+    <h2>Total: $<span id="cart-total">0</span></h2>
+    <button onclick="checkout()">Checkout</button>
+  </main>
 
-    <div class="space-between" style="margin-top:16px">
-      <button class="btn btn-outline" id="clearBtn">Empty Cart</button>
-      <div class="total">Subtotal: <span id="subtotal">₹0.00</span></div>
-    </div>
+  <script>
+    function renderCart() {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      let itemsDiv = document.getElementById("cart-items");
+      let total = 0;
+      itemsDiv.innerHTML = "";
+      cart.forEach(item => {
+        let div = document.createElement("div");
+        div.innerHTML = `${item.name} - $${item.price} x ${item.quantity}`;
+        itemsDiv.appendChild(div);
+        total += item.price * item.quantity;
+      });
+      document.getElementById("cart-total").textContent = total.toFixed(2);
+    }
 
-    <div style="margin-top:16px; text-align:right">
-      <a class="btn" href="checkout.html">Proceed to Checkout</a>
-    </div>
-  </div>
-</section>
+    function checkout() {
+      alert("Checkout complete! (Here you’ll integrate payment later)");
+      localStorage.removeItem("cart");
+      renderCart();
+      updateCartCount();
+    }
 
-<footer>
-  <div class="container wrap"><div class="muted">Prices are inclusive of VAT where applicable.</div></div>
-</footer>
-
-<div class="toast"></div>
-
-<script src="js/products.js"></script>
-<script src="js/cart.js"></script>
-<script>
-const tbody = document.getElementById("cartBody");
-const subtotalEl = document.getElementById("subtotal");
-const clearBtn = document.getElementById("clearBtn");
-
-function renderCart(){
-  const cart = getCart();
-  tbody.innerHTML = "";
-  let subtotal = 0;
-
-  if(cart.length===0){
-    tbody.innerHTML = `<tr><td colspan="5" class="muted">Your cart is empty. <a href="shop.html">Continue shopping</a>.</td></tr>`;
-  }
-
-  cart.forEach(row=>{
-    const p = findProduct(row.id);
-    if(!p) return;
-    const line = p.price * row.qty;
-    subtotal += line;
-    tbody.insertAdjacentHTML("beforeend", `
-      <tr>
-        <td class="row"><img src="${p.image}" alt="${p.name}" onerror="this.src='images/placeholder.jpg'"><div><strong>${p.name}</strong><div class="muted">${p.unit||""}</div></div></td>
-        <td>${money(p.price)}</td>
-        <td>
-          <input type="number" min="1" value="${row.qty}" style="width:70px" onchange="changeQty('${p.id}', this.value)">
-        </td>
-        <td>${money(line)}</td>
-        <td><button class="btn btn-outline" onclick="removeFromCart('${p.id}'); renderCart()">Remove</button></td>
-      </tr>
-    `);
-  });
-  subtotalEl.textContent = money(subtotal);
-  updateCartCount();
-}
-function changeQty(id, v){ setQty(id, v); renderCart(); }
-clearBtn.addEventListener("click", ()=>{ if(confirm("Clear all items?")){ emptyCart(); renderCart(); }});
-renderCart();
-</script>
+    document.addEventListener("DOMContentLoaded", () => {
+      renderCart();
+      updateCartCount();
+    });
+  </script>
 </body>
 </html>
